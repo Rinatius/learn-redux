@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import TextField from '@material-ui/core/TextField';
@@ -6,36 +6,28 @@ import Crement from './components/Crement/Crement'
 import Button from "@material-ui/core/Button";
 
 
-class App extends React.Component {
+const App = () => {
 
-  state = {
-    counter: 0,
-    results: []
-  }
+  const [counter, setCounter] = useState(0);
+  const [results, setResults] = useState([]);
 
-  handleCrementClick = (number) => {
-    this.setState({counter: this.state.counter + number})
+  const handleCrementClick = (number) => {
+    setCounter(counter + number)
   };
 
-  handleStoreClick = (count) => {
-    this.setState({results: this.state.results.concat(count)})
-  }
-
-  render() {
-    return (
-      <div className="App">
-        <TextField id="standard-basic"
-                   label="Standard"
-                   value={this.state.counter}/>
-        <Crement onCrClick={this.handleCrementClick}/>
-        <p/>
-        <Button variant="contained" onClick={() => this.handleStoreClick(this.state.counter)}>STORE</Button>
-        <ul>
-          {this.state.results.map(r => <li>{r}</li>)}
-        </ul>
-      </div>
-    );
-  }
-}
+  return (
+    <div className="App">
+      <TextField id="standard-basic"
+                 label="Standard"
+                 value={counter}/>
+      <Crement onCrClick={handleCrementClick}/>
+      <p/>
+      <Button variant="contained" onClick={() => setResults(results.concat(counter))}>STORE</Button>
+      <ul>
+        {results.map(r => <li>{r}</li>)}
+      </ul>
+    </div>
+  );
+};
 
 export default App;
