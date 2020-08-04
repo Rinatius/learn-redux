@@ -12,7 +12,7 @@ const reducer = (state = initialState, action) => {
     case 'STORE':
       return {
         ...state,
-        results: state.results.concat(state.counter)
+        results: state.results.concat(action.val)
       }
   }
   return state;
