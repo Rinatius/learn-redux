@@ -13,16 +13,12 @@ const App = () => {
   const results = useSelector(state => state.results);
   const dispatch = useDispatch()
 
-  const handleCrementClick = (number) => {
-    dispatch({type: 'INCREMENT', val: number})
-  };
-
   return (
     <div className="App">
       <TextField id="standard-basic"
                  label="Standard"
                  value={counter}/>
-      <Crement onCrClick={handleCrementClick}/>
+      <Crement/>
       <p/>
       <Button variant="contained" onClick={() => dispatch({type: 'STORE', val: counter})}>STORE</Button>
       <ul>

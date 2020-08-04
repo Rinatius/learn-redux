@@ -1,9 +1,12 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
+import {useDispatch} from "react-redux";
 
-function Crement(props) {
+function Crement() {
+  const dispatch = useDispatch()
+  
   const onButtClick = (number) => {
-    props.onCrClick(number)
+    dispatch({type: 'INCREMENT', val: number})
   }
 
   return  <div>
