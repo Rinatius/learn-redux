@@ -1,21 +1,8 @@
-const initialState = {
-  counter: 0,
-  results: []
-}
-const reducer = (state = initialState, action) => {
-  switch (action.type) {
-    case 'INCREMENT':
-      return {
-        ...state,
-        counter: state.counter + action.val
-      }
-    case 'STORE':
-      return {
-        ...state,
-        results: state.results.concat(action.val)
-      }
-  }
-  return state;
-}
+import {combineReducers} from "redux";
+import crementReducer from "./slices/crement"
+import storageReducer from "./slices/storage"
 
-export default reducer;
+export default combineReducers({
+  crement: crementReducer,
+  storage: storageReducer
+})
